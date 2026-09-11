@@ -1,3 +1,36 @@
-/* You can add global styles to this file, and also import other style files */
-
+/* src/styles.css */
 @import 'tailwindcss';
+
+@theme {
+    --color-bg-dark: #0F3040;
+    --color-header-dark: #464858;
+}
+
+/* Updated selector: checks if the element has .dark OR if an ancestor has .dark */
+@custom-variant dark-theme (&:where(.dark, .dark *, :has-ancestor(.dark)));
+
+body {
+    background-color: white;
+    transition: background-color 0.3s ease;
+    /* Smooth transition */
+
+    :where(.dark) &,
+    &.dark {
+        background-color: var(--color-bg-dark);
+    }
+}
+
+
+
+
+
+@utility header {
+    @apply text-4xl text-white font-bold p-10 bg-blue-600 transition-colors duration-300 shadow-2xl;
+    & :not(button) {
+        @apply text-xl;
+    }
+
+    @variant dark-theme {
+        background-color: var(--color-header-dark);
+    }
+}

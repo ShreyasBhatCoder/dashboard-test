@@ -1,0 +1,89 @@
+<div class="flex h-screen bg-gray-100">
+    <!-- Sidebar Container -->
+    <aside [ngClass]="isExpanded ? 'w-64' : 'w-20'"
+        class="bg-slate-900 text-white h-full flex flex-col justify-between p-4 transition-all duration-300 ease-in-out relative">
+        <!-- Top Header / Brand Section -->
+        <div>
+            <div class="flex items-center gap-3 mb-8 h-12 overflow-hidden px-1">
+                <!-- Profile Icon / Avatar Box -->
+                <div class="bg-indigo-600 p-2 rounded-xl shrink-0 flex items-center justify-center w-10 h-10 shadow-inner">
+                    <mat-icon class="text-white">account_circle</mat-icon>
+                </div>
+                <!-- Profile Text Info (Fades/collapses conditionally) -->
+                <div [ngClass]="isExpanded ? 'opacity-100 w-auto' : 'opacity-0 w-0 pointer-events-none'"
+                    class="flex flex-col min-w-0 transition-all duration-200">
+                    <span class="font-semibold text-sm whitespace-nowrap text-slate-100 truncate">Shreyas Bhat</span>
+                    <span class="text-xs text-slate-400 whitespace-nowrap truncate">Admin</span>
+                </div>
+            </div>
+
+            <!-- Navigation Links -->
+            <nav class="space-y-2">
+                @for (item of menuItems; track item.label) {
+                <button
+                    class="cursor-pointer w-full flex items-center gap-4 px-3 py-3 rounded-xl hover:bg-slate-800 text-slate-300 hover:text-white transition-colors group relative">
+                    <!-- Dynamic Icon Loader via @if/@else if -->
+                    <div class="shrink-0">
+                        <mat-icon>{{ item.icon }}</mat-icon>
+                    </div>
+
+                    <!-- Text Label -->
+                    <span [ngClass]="isExpanded ? 'w-auto opacity-100' : 'w-0 opacity-0 pointer-events-none'"
+                        class="whitespace-nowrap transition-all duration-300 overflow-hidden">
+                        {{ item.label }}
+                    </span>
+
+                    <!-- Tooltip on Hover when collapsed -->
+                    @if (!isExpanded) {
+                    <div
+                        class="absolute left-full rounded-md px-2 py-1 ml-6 bg-slate-950 text-white text-sm invisible opacity-20 -translate-x-3 transition-all group-hover:visible group-hover:opacity-100 group-hover:translate-x-0 whitespace-nowrap z-50 flex items-center justify-center">
+                        {{ item.label }}
+                    </div>
+                    }
+                </button>
+                }
+            </nav>
+        </div>
+
+        <div>
+            <!-- Divider Line -->
+            <hr class="border-slate-800 my-4" />
+
+            <!-- Logout Button -->
+            <button (click)="logout()"
+                class="cursor-pointer w-full flex items-center gap-4 px-3 py-3 rounded-xl hover:bg-red-950/40 text-rose-400 hover:text-rose-300 transition-colors group relative">
+                <div class="shrink-0 flex items-center justify-center">
+                    <mat-icon>logout</mat-icon>
+                </div>
+
+                <span [ngClass]="isExpanded ? 'w-auto opacity-100' : 'w-0 opacity-0 pointer-events-none'"
+                    class="whitespace-nowrap transition-all duration-300 overflow-hidden font-medium">
+                    Logout
+                </span>
+
+                <!-- Tooltip on Hover when collapsed -->
+                @if (!isExpanded) {
+                <div
+                    class="absolute left-full rounded-md px-2 py-1 ml-6 bg-red-950 text-rose-300 text-sm invisible opacity-20 -translate-x-3 transition-all group-hover:visible group-hover:opacity-100 group-hover:translate-x-0 whitespace-nowrap z-50 border border-red-900/50">
+                    Logout
+                </div>
+                }
+            </button>
+        </div>
+
+
+        <!-- Collapse Toggle Button -->
+        <button (click)="toggleSidebar()"
+            class="cursor-pointer absolute -right-4 top-16 bg-indigo-600 text-white p-1 rounded-full border-2 border-gray-100 shadow-md hover:bg-indigo-700 transition-colors flex items-center justify-center">
+            @if (isExpanded) {
+            <mat-icon class="text-[16px] w-4 h-4 flex items-center justify-center">keyboard_double_arrow_left</mat-icon>
+            } @else {
+            <mat-icon
+                class="text-[16px] w-4 h-4 flex items-center justify-center">keyboard_double_arrow_right</mat-icon>
+            }
+        </button>
+    </aside>
+
+    <!-- Main Content Area -->
+    <app-main />
+</div>

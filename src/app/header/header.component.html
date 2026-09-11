@@ -1,0 +1,13 @@
+<header class="header flex flex-row items-center">
+    Header Component
+
+    <div class="ml-auto flex flex-row gap-2.5 items-center">
+        <mat-slide-toggle (change)="toggleTheme()">
+            <!-- Projecting the icon alongside the layout context -->
+            <div class="flex items-center gap-2">
+                <mat-icon>{{ isDarkMode ? 'dark_mode' : 'light_mode' }}</mat-icon>
+            </div>
+        </mat-slide-toggle>
+        <button matFab extended>Click</button>
+    </div>
+</header>
