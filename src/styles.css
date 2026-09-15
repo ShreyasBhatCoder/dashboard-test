@@ -20,17 +20,12 @@ body {
     }
 }
 
-
-
+table {
+    background-color: transparent;
+}
 
 
 @utility header {
-    @apply text-4xl text-white font-bold p-10 bg-blue-600 transition-colors duration-300 shadow-2xl;
-    & :not(button) {
-        @apply text-xl;
-    }
-
-    @variant dark-theme {
-        background-color: var(--color-header-dark);
-    }
+    @apply text-3xl font-bold text-slate-800;
 }
+    
