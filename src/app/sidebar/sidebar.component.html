@@ -10,7 +10,10 @@
         <div class="flex flex-row items-center min-[1201px]:flex-col min-[1201px]:items-stretch shrink-0">
             <!-- Brand Section -->
             <div class="flex items-center overflow-hidden h-12 min-[1201px]:h-14 min-[1201px]:mb-5 min-[1201px]:items-center justify-center"
-                [ngClass]="isExpanded? 'min-[1201px]:gap-3.5' : 'gap-3.5'">
+                [ngClass]="[
+                    isExpanded ? 'min-[1201px]:gap-3.5' : 'min-[1201px]:gap-0',
+                    !isDesktop ? 'gap-3' : ''
+                    ]">
                 <div
                     class="bg-linear-to-br from-indigo-500 to-indigo-700 p-2.5 rounded-xl shrink-0 flex items-center justify-center w-11 h-11 shadow-lg shadow-indigo-500/20">
                     <mat-icon class="text-white scale-110">hub</mat-icon>
