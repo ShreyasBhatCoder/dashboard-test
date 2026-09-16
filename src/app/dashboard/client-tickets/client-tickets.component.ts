@@ -10,11 +10,12 @@ import { MatTableModule } from '@angular/material/table';
   styleUrl: './client-tickets.component.css',
 })
 export class ClientTickets {
-  displayedColumns: string[] = ['song', 'artist', 'year'];
+  displayedColumns: string[] = ['Song', 'Artist', 'Year'];
   
   dataSource: TicketElement[] = [
     { song: 'The Sliding Mr. Bones (Next Stop, Pottersville)', artist: 'Malcolm Lockyer', year: 1961 },
     { song: 'Witchy Woman', artist: 'The Eagles', year: 1972 },
-    { song: 'Shining Star', artist: 'Earth, Wind, and Fire', year: 1975 }
+    { song: 'Shining Star', artist: 'Earth, Wind, and Fire', year: 1975 },
+    { song: 'Für Elise', artist: 'Ludwig Van Beethoven', year: 1810 }
   ];
 }

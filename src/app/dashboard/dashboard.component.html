@@ -1,11 +1,15 @@
-<!-- Make it flex display -->
-
-<!-- Fixed: Changed breakpoint to match 1200px, added w-full layouts to children -->
-<div class="flex flex-row gap-6 max-[1200px]:flex-col items-center justify-center w-full p-6 md:p-9">
-    <app-client-tickets class="w-full min-[1201px]:w-1/2 max-w-4xl"/>
-</div>
-
-<!-- Client list -->
-<div>
-
+<!-- Fixed Dashboard Grid Frame -->
+<div class="grid grid-cols-1 min-[1201px]:grid-cols-2 gap-6 w-full p-6 md:p-9 max-w-[1600px] mx-auto auto-rows-fr">
+    
+    <!-- Left Ticket Card Column -->
+    <app-client-tickets class="w-full h-full" />
+    
+    <!-- Right Ticket Card Column -->
+    <app-client-tickets class="w-full h-full" />
+    
+    <!-- Full-Width Footprint reserved for your Client List Table later -->
+    <div class="col-span-1 min-[1201px]:col-span-2 w-full mt-2">
+        <app-client-tickets />
+        <!-- Space to add a clients list table HERE later -->
+    </div>
 </div>

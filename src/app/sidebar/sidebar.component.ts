@@ -4,17 +4,22 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MenuItem } from '../../../utils/menu-item.model';
 import { MatIconModule } from '@angular/material/icon';
 import { Main } from '../main/main.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 
 
 @Component({
   selector: 'app-sidebar',
-  imports: [MatDividerModule, NgClass, MatIconModule, Main],
+  imports: [MatDividerModule, MatIconModule, Main, MatTooltipModule, NgClass],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.css',
+  host: {
+    "(window:resize)": "onResize()"
+  }
 })
 export class Sidebar {
   isExpanded = true;
+  isDesktop = false;
 
   menuItems: MenuItem[] = [
     { icon: 'dashboard', label: 'Dashboard' },
@@ -22,6 +27,20 @@ export class Sidebar {
     { icon: 'settings', label: 'Settings' }
     // { icon: 'help-circle', label: 'Help' },
   ];
+
+
+  ngOnInit(): void {
+    this.updateScreenMode();
+  }
+
+  onResize(): void {
+    this.updateScreenMode();
+  }
+  
+
+  private updateScreenMode(): void {
+    this.isDesktop = window.innerWidth >= 1201;
+  }
 
   toggleSidebar(): void {
     this.isExpanded = !this.isExpanded;

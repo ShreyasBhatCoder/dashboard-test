@@ -1,92 +1,121 @@
 <!-- Wrapper changes from horizontal layout to vertical stack on smaller screens -->
-<div class="flex flex-col min-[1201px]:flex-row h-screen bg-gray-100">
+<div class="flex flex-col min-[1201px]:flex-row h-screen bg-slate-50">
 
-    <!-- Navigation Container (Topbar <= 1200px | Sidebar > 1200px) -->
-    <aside [ngClass]="isExpanded ? 'min-[1201px]:w-64' : 'min-[1201px]:w-20'" class="bg-slate-900 text-white transition-all duration-300 ease-in-out relative shrink-0
-           w-full h-auto flex flex-row items-center justify-between p-4 border-b border-slate-800
-           min-[1201px]:h-full min-[1201px]:flex-col min-[1201px]:p-4 min-[1201px]:border-b-0">
-        <!-- TOP / LEFT GROUP: Profile Section -->
-        <div class="flex flex-row items-center min-[1201px]:flex-col min-[1201px]:items-stretch min-[1201px]:w-full">
-            <!-- Profile Section -->
-            <div class="flex items-center gap-3 overflow-hidden px-1 h-10 min-[1201px]:h-12 min-[1201px]:mb-8">
-                <!-- Profile Icon -->
+    <!-- Premium Navigation Container (Topbar <= 1200px | Premium Collapsible Vertical Navbar >= 1201px) -->
+    <aside [ngClass]="isExpanded ? 'min-[1201px]:w-64' : 'min-[1201px]:w-24'" class="bg-slate-950 text-white transition-all duration-300 ease-in-out relative shrink-0 z-40
+           w-full h-auto flex flex-row items-center justify-between p-4 border-b border-slate-900 shadow-xl shadow-slate-950/20
+           min-[1201px]:h-full min-[1201px]:flex-col min-[1201px]:p-5 min-[1201px]:border-b-0 min-[1201px]:border-r">
+
+        <!-- TOP GROUP (Sidebar) / LEFT GROUP (Topbar) -->
+        <div class="flex flex-row items-center min-[1201px]:flex-col min-[1201px]:items-stretch shrink-0">
+            <!-- Brand Section -->
+            <div class="flex items-center overflow-hidden h-12 min-[1201px]:h-14 min-[1201px]:mb-5 min-[1201px]:items-center justify-center"
+                [ngClass]="isExpanded? 'min-[1201px]:gap-3.5' : 'gap-3.5'">
                 <div
-                    class="bg-indigo-600 p-2 rounded-xl shrink-0 flex items-center justify-center w-10 h-10 shadow-inner">
-                    <mat-icon class="text-white">account_circle</mat-icon>
+                    class="bg-linear-to-br from-indigo-500 to-indigo-700 p-2.5 rounded-xl shrink-0 flex items-center justify-center w-11 h-11 shadow-lg shadow-indigo-500/20">
+                    <mat-icon class="text-white scale-110">hub</mat-icon>
                 </div>
-                <!-- Profile Text Info -->
                 <div [ngClass]="isExpanded ? 'min-[1201px]:opacity-100 min-[1201px]:w-auto' : 'min-[1201px]:opacity-0 min-[1201px]:w-0 min-[1201px]:pointer-events-none'"
-                    class="flex flex-col min-w-0 transition-all duration-200">
-                    <span class="font-semibold text-sm whitespace-nowrap text-slate-100 truncate">Shreyas Bhat</span>
+                    class="hidden sm:flex flex-col min-w-0 transition-all duration-200 origin-left">
+                    <span class="font-bold text-base tracking-wide text-slate-100 truncate">Freelancer's Hub</span>
                     <span
-                        class="text-xs text-slate-400 whitespace-nowrap truncate min-[1201px]:block hidden">Admin</span>
+                        class="text-[10px] text-indigo-400 font-bold tracking-wider uppercase min-[1201px]:block hidden">Workspace
+                        v1.0</span>
                 </div>
             </div>
 
-            <!-- Center Links (Visible only on desktop sidebar mode) -->
-            <nav class="hidden min-[1201px]:block space-y-2 mt-4">
+            <!-- DESKTOP NAVBAR LINKS: High-End Vertical Buttons (Visible >= 1201px) -->
+            <nav class="hidden min-[1201px]:block space-y-1.5 mt-2 w-full">
                 @for (item of menuItems; track item.label) {
                 <button
-                    class="w-full flex items-center gap-4 px-3 py-3 rounded-xl hover:bg-slate-800 text-slate-300 hover:text-white transition-colors group relative">
-                    <div class="shrink-0 flex items-center justify-center"><mat-icon>{{ item.icon }}</mat-icon></div>
+                    class="w-full flex items-center gap-4 px-4 py-3.5 rounded-xl text-slate-400 hover:text-white hover:bg-slate-900 transition-all duration-200 group relative text-base font-bold tracking-wide cursor-pointer">
+                    <div [ngClass]="isExpanded ? 'justify-start' : 'justify-center w-full'"
+                        class="shrink-0 flex items-center text-slate-400 group-hover:text-indigo-400 transition-colors">
+                        <mat-icon class="text-[22px] w-5 h-5 flex items-center justify-center">{{ item.icon
+                            }}</mat-icon>
+                    </div>
                     <span [ngClass]="isExpanded ? 'w-auto opacity-100' : 'w-0 opacity-0 pointer-events-none'"
                         class="whitespace-nowrap transition-all duration-300 overflow-hidden">{{ item.label }}</span>
+
                     @if (!isExpanded) {
                     <div
-                        class="absolute left-full rounded-md px-2 py-1 ml-6 bg-slate-950 text-white text-sm invisible opacity-20 -translate-x-3 transition-all group-hover:visible group-hover:opacity-100 group-hover:translate-x-0 whitespace-nowrap z-50">
-                        {{ item.label }}</div>
+                        class="absolute left-full rounded-md px-2.5 py-1.5 ml-6 bg-slate-900 text-white text-xs font-semibold border border-slate-800 shadow-xl invisible opacity-0 -translate-x-3 transition-all group-hover:visible group-hover:opacity-100 group-hover:translate-x-0 whitespace-nowrap z-50">
+                        {{ item.label }}
+                    </div>
                     }
                 </button>
                 }
             </nav>
         </div>
 
-        <!-- MIDDLE GROUP: Topbar Middle Navigation (Only visible <= 1200px) -->
+        <!-- MIDDLE GROUP: Left-Justified Topbar Links Container (Active <= 1200px) -->
         <nav
-            class="flex flex-row items-center gap-2 min-[1201px]:hidden overflow-x-auto max-w-[50%] px-2 scrollbar-none">
+            class="flex flex-row items-center justify-start gap-2 sm:gap-3 min-[1201px]:hidden flex-1 ml-4 mr-2 overflow-x-auto scrollbar-none">
             @for (item of menuItems; track item.label) {
             <button
-                class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-slate-800 text-slate-300 hover:text-white transition-colors whitespace-nowrap text-sm">
-                <mat-icon class="text-[20px] w-5 h-5 flex items-center justify-center">{{ item.icon }}</mat-icon>
-                <span class="hidden md:inline">{{ item.label }}</span>
+                class="flex items-center gap-1.5 px-3 py-2 rounded-xl hover:bg-slate-900 text-slate-300 hover:text-white transition-colors whitespace-nowrap text-sm font-semibold tracking-wide shrink-0 cursor-pointer">
+                <span class="min-[1201px]:flex hidden shrink-0 text-slate-400">
+                    <mat-icon class="text-[18px] w-4 h-4 flex items-center justify-center">{{ item.icon }}</mat-icon>
+                </span>
+                <span class="inline-block">{{ item.label }}</span>
             </button>
             }
         </nav>
 
-        <!-- BOTTOM / RIGHT GROUP: Divider & Logout -->
-        <div class="flex flex-row items-center min-[1201px]:flex-col min-[1201px]:w-full">
-            <!-- Divider line -->
-            <hr class="hidden min-[1201px]:block border-slate-800 w-full my-4" />
+        <!-- RIGHT GROUP (Topbar) / BOTTOM GROUP (Sidebar): Profile Module & Logout -->
+        <!-- RIGHT GROUP (Topbar) / BOTTOM GROUP (Sidebar): Profile Module & Logout -->
+        <div class="flex flex-row items-center min-[1201px]:flex-col min-[1201px]:w-full shrink-0 select-none">
+            <hr class="hidden min-[1201px]:block border-slate-900 w-full mb-5" />
 
-            <!-- Logout Button -->
-            <button (click)="logout()" class="flex items-center gap-2 px-3 py-2 rounded-lg text-rose-400 hover:text-rose-300 hover:bg-red-950/40 transition-colors group relative
-               min-[1201px]:w-full min-[1201px]:gap-4 min-[1201px]:px-3 min-[1201px]:py-3 min-[1201px]:rounded-xl">
-                <div class="shrink-0 flex items-center justify-center"><mat-icon>logout</mat-icon></div>
-                <span
-                    [ngClass]="isExpanded ? 'min-[1201px]:w-auto min-[1201px]:opacity-100' : 'min-[1201px]:w-0 min-[1201px]:opacity-0 min-[1201px]:pointer-events-none'"
-                    class="whitespace-nowrap transition-all duration-300 overflow-hidden font-medium hidden min-[1201px]:inline">
-                    Logout
-                </span>
-                <!-- Sidebar Hover Tooltip -->
-                @if (!isExpanded) {
-                <div
-                    class="absolute left-full rounded-md px-2 py-1 ml-6 bg-red-950 text-rose-300 text-sm invisible opacity-20 -translate-x-3 transition-all group-hover:visible group-hover:opacity-100 group-hover:translate-x-0 whitespace-nowrap z-50 border border-red-900/50 hidden min-[1201px]:block">
-                    Logout</div>
-                }
-            </button>
+            <!-- Profile Interactive Deck Frame -->
+            <!-- Fixed: Dynamically toggles alignment containers (justify-center vs justify-between) to lock avatar to absolute dead-center when collapsed -->
+            <div matTooltip="Shreyas Bhat (Admin)" matTooltipPosition="above" [matTooltipDisabled]="isDesktop"
+                [ngClass]="isExpanded 
+            ? 'min-[1201px]:p-2.5 min-[1201px]:bg-slate-900/40 min-[1201px]:border min-[1201px]:border-slate-900/80 min-[1201px]:rounded-2xl justify-between w-full' 
+            : 'p-0 bg-transparent border-0 min-[1201px]:justify-center min-[1201px]:w-full'"
+                class="flex items-center transition-all duration-300 relative group flex-row gap-2 cursor-pointer">
+
+                <!-- Avatar & Text Info Container -->
+                <div class="flex items-center overflow-hidden"
+                    [ngClass]="!isExpanded ? 'min-[1201px]:justify-center' : 'min-[1201px]:gap-2 justify-center'">
+                    <!-- Fixed: Stripped offset remnants so the avatar plate snaps to the center point cleanly -->
+                    <div [ngClass]="!isExpanded ? 'min-[1201px]:mx-auto w-11 h-11' : 'w-9 h-9 min-[1201px]:w-11 min-[1201px]:h-11'"
+                        class="bg-slate-900 border border-slate-800 p-1.5 rounded-xl shrink-0 flex items-center justify-center shadow-inner">
+                        <mat-icon class="text-slate-400 scale-105">account_circle</mat-icon>
+                    </div>
+
+                    <div [ngClass]="isExpanded ? 'opacity-100 w-auto' : 'opacity-0 w-0 pointer-events-none'"
+                        class="hidden min-[1201px]:flex flex-col min-w-0 text-left transition-all duration-200 origin-left">
+                        <span class="font-bold text-xs whitespace-nowrap text-slate-200 truncate">Shreyas Bhat</span>
+                        <span class="text-[10px] text-slate-500 font-bold tracking-wider uppercase mt-0.5">Admin</span>
+                    </div>
+                </div>
+
+                <!-- Expanded Standard Logout Trigger Button (Only visible on Topbar or Expanded Sidebar) -->
+                <button (click)="logout(); $event.stopPropagation()" title="Logout"
+                    class="flex shrink-0 items-center justify-center p-2 rounded-xl text-rose-400 hover:bg-red-950/40 hover:text-rose-300 transition-all active:scale-95 duration-150 min-[1201px]:ml-auto cursor-pointer"
+                    [ngClass]="{'min-[1201px]:hidden': !isExpanded}">
+                    <mat-icon class="text-[18px] w-4.5 h-4.5 flex items-center justify-center">logout</mat-icon>
+                </button>
+
+                <!-- Fixed: Removed micro-collapsed button block entirely to get rid of the overlapping layout hover effect -->
+            </div>
         </div>
 
-        <!-- Collapse Toggle Floating Arrow (Only visible on Sidebar mode > 1200px) -->
+
+        <!-- Premium Vertical Center Collapse Toggle Floating Button -->
         <button (click)="toggleSidebar()"
-            class="hidden min-[1201px]:flex absolute -right-3 top-16 bg-indigo-600 text-white p-1 rounded-full border-2 border-gray-100 shadow-md hover:bg-indigo-700 transition-colors items-center justify-center">
+            class="hidden min-[1201px]:flex absolute -right-3.5 top-1/2 -translate-y-1/2 bg-indigo-600 text-white p-1 rounded-full border-2 border-slate-50 shadow-md hover:bg-indigo-700 active:scale-90 transition-all items-center justify-center z-50 w-8 h- cursor-pointer">
             @if (isExpanded) {
-            <mat-icon class="text-[16px] w-4 h-4 flex items-center justify-center">keyboard_double_arrow_left</mat-icon>
+            <mat-icon
+                class="text-[14px] w-3.5 h-3.5 flex items-center justify-center font-bold">keyboard_double_arrow_left</mat-icon>
             } @else {
-            <mat-icon class="text-[16px] w-4 h-4 flex items-center justify-center">keyboard_double_arrow_right</mat-icon>
+            <mat-icon
+                class="text-[14px] w-3.5 h-3.5 flex items-center justify-center font-bold">keyboard_double_arrow_right</mat-icon>
             }
         </button>
     </aside>
 
-    <!-- Fixed: Added Tailwind sizing classes directly onto the app-main element component -->
+    <!-- Main Content Canvas Layout Container -->
     <app-main class="flex-1 w-full overflow-y-auto block" />
 </div>

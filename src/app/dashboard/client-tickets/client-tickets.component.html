@@ -1,55 +1,70 @@
-<mat-card class="max-w-4xl mx-auto my-7 shadow-md border border-slate-100 rounded-xl overflow-hidden">
-
-    <!-- Header matching default mat-card styling -->
-    <mat-card-header class="px-6 py-4 border-b border-slate-100">
-        <mat-card-title class="text-lg font-semibold text-slate-800 tracking-tight">
-            Client Tickets
-        </mat-card-title>
+<mat-card class="overflow-hidden rounded-xl border border-slate-100 bg-white shadow-sm max-h-85 flex flex-col">
+    <!-- Compact Card Header -->
+    <mat-card-header class="border-b border-slate-100 px-5 py-3 bg-slate-50/50 shrink-0 mb-5">
+        <div class="flex items-center justify-between w-full">
+            <div>
+                <mat-card-title class="text-base font-semibold text-slate-900 tracking-tight">Client Tickets</mat-card-title>
+            </div>
+            <span class="inline-flex items-center rounded-full bg-indigo-50 px-2.5 py-0.5 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
+                {{ dataSource.length }} Active
+            </span>
+        </div>
     </mat-card-header>
 
-    <mat-card-content class="p-0">
-        <div class="overflow-x-auto">
-            <table mat-table [dataSource]="dataSource" class="w-full text-sm text-left text-slate-600">
+    <!-- Compressed Table Wrapper with Shorter Max Height -->
+    <mat-card-content class="p-0 flex-1 min-h-0">
+        <!-- Base height restricted tightly to 220px -->
+        <div class="overflow-x-auto overflow-y-auto max-h-55 scrollbar-thin">
+            <table class="w-full border-collapse text-left text-sm text-slate-600 table-fixed">
+                <!-- Sticky Header with optimized compact vertical padding -->
+                <thead class="sticky top-0 z-10 bg-slate-50 shadow-[0_1px_0_0_rgba(226,232,240,1)]">
+                    <tr>
+                        @for (column of displayedColumns; track column) {
+                            <th class="px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-slate-500">
+                                {{ column }}
+                            </th>
+                        }
+                            <th class="px-5 py-2.5 text-right text-xs font-semibold uppercase tracking-wider text-slate-500">
+                                Actions
+                            </th>
+                    </tr>
+                </thead>
 
-                <!-- Song Column -->
-                <ng-container matColumnDef="song">
-                    <th mat-header-cell *matHeaderCellDef
-                        class="px-6 py-4 font-medium text-slate-500 border-b border-slate-100">
-                        Song
-                    </th>
-                    <td mat-cell *matCellDef="let element"
-                        class="px-6 py-4 font-medium text-slate-900 border-b border-slate-100">
-                        {{element.song}}
-                    </td>
-                </ng-container>
+                <!-- Compact Body Rows -->
+                <tbody class="divide-y divide-slate-100 bg-white">
+                    @for (row of dataSource; track row.song) {
+                    <tr class="hover:bg-slate-50/80 transition-colors duration-150 ease-in-out group">
+                        <!-- Song Name -->
+                        <td class="px-5 py-2.5">
+                            <div
+                                class="font-medium text-slate-900 group-hover:text-indigo-600 transition-colors max-w-xs truncate md:max-w-md text-sm">
+                                {{ row.song }}
+                            </div>
+                            <div class="text-[11px] text-slate-400 mt-0.5">#TICK-00{{ $index + 1 }}</div>
+                        </td>
 
-                <!-- Artist Column -->
-                <ng-container matColumnDef="artist">
-                    <th mat-header-cell *matHeaderCellDef
-                        class="px-6 py-4 font-medium text-slate-500 border-b border-slate-100">
-                        Artist
-                    </th>
-                    <td mat-cell *matCellDef="let element" class="px-6 py-4 border-b border-slate-100">
-                        {{element.artist}}
-                    </td>
-                </ng-container>
+                        <!-- Artist Name -->
+                        <td class="px-5 py-2.5">
+                            <div class="flex items-center gap-2.5">
+                                <div class="font-medium text-slate-800 text-sm">{{ row.artist }}</div>
+                            </div>
+                        </td>
 
-                <!-- Year Column -->
-                <ng-container matColumnDef="year">
-                    <th mat-header-cell *matHeaderCellDef
-                        class="px-6 py-4 font-medium text-slate-500 border-b border-slate-100">
-                        Year
-                    </th>
-                    <td mat-cell *matCellDef="let element" class="px-6 py-4 text-slate-500 border-b border-slate-100">
-                        {{element.year}}
-                    </td>
-                </ng-container>
+                        <!-- Year -->
+                        <td class="px-5 py-2.5 whitespace-nowrap text-slate-500 text-xs">
+                            {{ row.year }}
+                        </td>
 
-                <!-- Table Row Configurations -->
-                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns;"
-                    class="hover:bg-slate-50/80 transition-colors duration-150 ease-in-out"></tr>
-
+                        <!-- Action Button -->
+                        <td class="px-5 py-2.5 whitespace-nowrap text-right text-xs font-medium">
+                            <button
+                                class="cursor-pointer inline-flex items-center gap-1 rounded-md border border-slate-200 bg-white px-2 py-1 text-xs font-medium text-slate-700 shadow-sm hover:bg-slate-50 transition">
+                                View
+                            </button>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
             </table>
         </div>
     </mat-card-content>
