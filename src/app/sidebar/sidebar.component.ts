@@ -24,6 +24,7 @@ export class Sidebar implements OnInit {
   menuItems: MenuItem[] = [
     { icon: 'dashboard', label: 'Dashboard' },
     { icon: 'confirmation_number', label: 'Ticket Manager' },
+    { icon: 'add_2', label: 'Add New' },
     { icon: 'settings', label: 'Settings' },
     { icon: 'help-circle', label: 'Help' },
   ];
