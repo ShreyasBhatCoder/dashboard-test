@@ -24,8 +24,8 @@ export class Sidebar {
   menuItems: MenuItem[] = [
     { icon: 'dashboard', label: 'Dashboard' },
     { icon: 'confirmation_number', label: 'Ticket Manager' },
-    { icon: 'settings', label: 'Settings' }
-    // { icon: 'help-circle', label: 'Help' },
+    { icon: 'settings', label: 'Settings' },
+    { icon: 'help-circle', label: 'Help' },
   ];
 
 

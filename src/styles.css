@@ -24,6 +24,27 @@ table {
     background-color: transparent;
 }
 
+/* Custom utility to force a thin, translucent scrollbar on the mobile nav dock */
+.translucent-scroll {
+    overflow-x: auto !important;
+    scrollbar-width: thin !important;
+    scrollbar-color: rgba(255, 255, 255, 0.15) transparent !important;
+}
+
+.translucent-scroll::-webkit-scrollbar {
+    height: 4px !important;
+}
+
+.translucent-scroll::-webkit-scrollbar-track {
+    background: transparent !important;
+}
+
+.translucent-scroll::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.15) !important;
+    border-radius: 9999px !important;
+}
+
+
 
 @utility header {
     @apply text-3xl font-bold text-slate-800;
