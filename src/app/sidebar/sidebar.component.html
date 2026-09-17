@@ -1,5 +1,5 @@
 <!-- Wrapper changes from horizontal layout to vertical stack on smaller screens -->
-<div class="flex flex-col min-[1201px]:flex-row h-screen bg-slate-50">
+<div class="flex flex-col min-[1201px]:flex-row h-screen">
 
     <!-- Premium Navigation Container (Topbar <= 1200px | Premium Collapsible Vertical Navbar >= 1201px) -->
     <aside [ngClass]="isExpanded ? 'min-[1201px]:w-64' : 'min-[1201px]:w-24'" class="bg-slate-950 text-white transition-all duration-300 ease-in-out relative shrink-0 z-40
@@ -76,8 +76,45 @@
         </nav>
 
         <!-- RIGHT GROUP (Topbar Layout) / BOTTOM GROUP (Sidebar Layout): Profile Module & Logout -->
-        <div class="flex flex-row items-center min-[1201px]:flex-col min-[1201px]:w-full shrink-0 select-none">
-            <hr class="hidden min-[1201px]:block border-slate-900 w-full mb-5" />
+        <div
+            class="flex flex-row items-center min-[1201px]:flex-col min-[1201px]:w-full shrink-0 select-none ml-auto min-[1201px]:ml-0 gap-3 min-[1201px]:gap-0">
+
+            <!-- Premium Add-on 1: Sidebar Theme Switcher Module Layer -->
+            <div [ngClass]="isExpanded ? 'min-[1201px]:px-4 min-[1201px]:justify-between' : 'min-[1201px]:px-0 min-[1201px]:justify-center'"
+                class="hidden min-[1201px]:flex w-full items-center py-3 mb-2 rounded-xl text-slate-400 select-none transition-all duration-300">
+                <div class="flex items-center" [ngClass]="isExpanded ? 'gap-4' : 'justify-center w-full'">
+                    <div class="flex items-center justify-center text-slate-400"
+                        [ngClass]="isExpanded ? 'shrink-0' : 'w-full'">
+                        <mat-icon class="text-[22px] w-5 h-5 flex items-center justify-center"
+                            [ngClass]="isDarkMode ? 'text-amber-400' : 'text-slate-400'">
+                            {{ isDarkMode ? 'dark_mode' : 'light_mode' }}
+                        </mat-icon>
+                    </div>
+                    @if (isExpanded) {
+                    <span class="whitespace-nowrap transition-all duration-300 overflow-hidden text-sm font-semibold tracking-wide">
+                        Dark Theme
+                    </span>
+                    }
+                </div>
+                <!-- Connected (change) callback handler directly to your toggleTheme method -->
+                @if (isExpanded) {
+                <mat-slide-toggle [checked]="isDarkMode" (change)="toggleTheme()"
+                    class="cursor-pointer scale-90 transition-opacity duration-300 shrink-0">
+                </mat-slide-toggle>
+                }
+            </div>
+
+            <!-- Premium Add-on 2: Compact Mobile Topbar Dark Mode Icon Button -->
+            <!-- Connected (click) handler callback directly to your toggleTheme method -->
+            <button (click)="toggleTheme()" [matTooltip]="isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'"
+                matTooltipPosition="below"
+                class="min-[1201px]:hidden flex items-center justify-center p-2 rounded-xl border border-slate-900 bg-slate-900/40 text-slate-400 hover:text-white transition-all cursor-pointer relative shrink-0">
+                <mat-icon class="text-[20px] w-5 h-5 flex items-center justify-center"
+                    [ngClass]="isDarkMode ? 'text-amber-400' : 'text-slate-400'">
+                    {{ isDarkMode ? 'dark_mode' : 'light_mode' }}
+                </mat-icon>
+            </button>
+
 
             <!-- Profile Interactive Deck Frame -->
             <div matTooltip="Shreyas Bhat (Admin)" matTooltipPosition="above" [matTooltipDisabled]="isDesktop"
@@ -87,16 +124,12 @@
                 class="flex items-center transition-all duration-300 relative group flex-row gap-2 cursor-pointer">
 
                 <!-- Avatar & Text Info Container -->
-                <div class="flex items-center overflow-hidden"
-                    [ngClass]="[
-                    !isExpanded ? 'min-[1201px]:justify-center' : 'min-[1201px]:gap-2',
-                    !isDesktop ? 'gap-2' : ''
-                    ]">
+                <div class="flex items-center gap-2 overflow-hidden"
+                    [ngClass]="!isExpanded ? 'min-[1201px]:justify-center' : ''">
                     <div [ngClass]="!isExpanded ? 'min-[1201px]:mx-auto w-11 h-11' : 'w-9 h-9 min-[1201px]:w-11 min-[1201px]:h-11'"
                         class="bg-slate-900 border border-slate-800 p-1.5 rounded-xl shrink-0 flex items-center justify-center shadow-inner">
                         <mat-icon class="text-slate-400 scale-105">account_circle</mat-icon>
                     </div>
-                    <!-- Fixed: The profile name and title details are now completely visible across both sidebar and topbar views -->
                     <div class="flex flex-col min-w-0 text-left transition-all duration-200 origin-left"
                         [ngClass]="isExpanded ? 'min-[1201px]:opacity-100 min-[1201px]:w-auto' : 'min-[1201px]:opacity-0 min-[1201px]:w-0 min-[1201px]:pointer-events-none'">
                         <span class="font-bold text-xs whitespace-nowrap text-slate-200 truncate">Shreyas Bhat</span>
@@ -113,6 +146,9 @@
             </div>
         </div>
 
+
+
+
         <!-- Premium Vertical Center Collapse Toggle Floating Circular Button -->
         <button (click)="toggleSidebar()"
             class="hidden min-[1201px]:flex absolute -right-3.5 top-1/2 -translate-y-1/2 bg-indigo-600 text-white p-1 rounded-full border-2 border-slate-50 shadow-md hover:bg-indigo-700 active:scale-90 transition-all items-center justify-center z-50 w-7 h-7 aspect-square cursor-pointer">
@@ -127,5 +163,5 @@
     </aside>
 
     <!-- Main Content Canvas Layout Container -->
-    <app-main class="flex-1 w-full overflow-y-auto block" />
+    <app-main class="flex-1 w-full overflow-y-auto block dark:text-slate-100" />
 </div>

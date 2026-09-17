@@ -1,11 +1,14 @@
-<mat-card class="overflow-hidden rounded-xl border border-slate-100 bg-white shadow-sm max-h-85 flex flex-col">
+<mat-card
+    class="overflow-hidden rounded-xl border border-slate-100 dark:border-slate-800/80 bg-white dark:bg-slate-900 shadow-sm max-h-85 flex flex-col transition-colors duration-200">
     <!-- Compact Card Header -->
-    <mat-card-header class="border-b border-slate-100 px-5 py-3 bg-slate-50/50 shrink-0 mb-5">
+    <mat-card-header class="px-5 py-3 bg-slate-50/50 dark:bg-slate-900/60 shrink-0 mb-5">
         <div class="flex items-center justify-between w-full">
             <div>
-                <mat-card-title class="text-base font-semibold text-slate-900 tracking-tight">Client Tickets</mat-card-title>
+                <mat-card-title class="text-base font-semibold text-slate-900 dark:text-slate-100 tracking-tight">Client
+                    Tickets</mat-card-title>
             </div>
-            <span class="inline-flex items-center rounded-full bg-indigo-50 px-2.5 py-0.5 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
+            <span
+                class="inline-flex items-center rounded-full bg-indigo-50 dark:bg-indigo-950/60 px-2.5 py-0.5 text-xs font-medium text-indigo-700 dark:text-indigo-300 ring-1 ring-inset ring-indigo-700/10 dark:ring-indigo-400/20">
                 {{ dataSource.length }} Active
             </span>
         </div>
@@ -15,50 +18,56 @@
     <mat-card-content class="p-0 flex-1 min-h-0">
         <!-- Base height restricted tightly to 220px -->
         <div class="overflow-x-auto overflow-y-auto max-h-55 scrollbar-thin">
-            <table class="w-full border-collapse text-left text-sm text-slate-600 table-fixed">
-                <!-- Sticky Header with optimized compact vertical padding -->
-                <thead class="sticky top-0 z-10 bg-slate-50 shadow-[0_1px_0_0_rgba(226,232,240,1)]">
-                    <tr>
+            <table class="w-full border-collapse text-left text-sm text-slate-600 dark:text-slate-300 table-fixed">
+                <!-- Sticky Header with solid opaque background to prevent see-through on scroll -->
+                <thead
+                    class="sticky top-0 z-10 bg-slate-50 dark:bg-slate-800 shadow-[0_1px_0_0_rgba(226,232,240,1)] dark:shadow-[0_1px_0_0_rgba(51,65,85,1)]">
+                    <tr class="bg-slate-50 dark:bg-slate-800">
                         @for (column of displayedColumns; track column) {
-                            <th class="px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-slate-500">
-                                {{ column }}
-                            </th>
+                        <th
+                            class="px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 bg-slate-50 dark:bg-slate-800">
+                            {{ column }}
+                        </th>
                         }
-                            <th class="px-5 py-2.5 text-right text-xs font-semibold uppercase tracking-wider text-slate-500">
-                                Actions
-                            </th>
+                        <th
+                            class="px-5 py-2.5 text-right text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 bg-slate-50 dark:bg-slate-800">
+                            Actions
+                        </th>
                     </tr>
                 </thead>
 
                 <!-- Compact Body Rows -->
-                <tbody class="divide-y divide-slate-100 bg-white">
+                <tbody class="divide-y divide-slate-100 dark:divide-slate-800/80 bg-white dark:bg-slate-900">
                     @for (row of dataSource; track row.song) {
-                    <tr class="hover:bg-slate-50/80 transition-colors duration-150 ease-in-out group">
+                    <tr
+                        class="hover:bg-slate-50/80 dark:hover:bg-slate-800/60 transition-colors duration-150 ease-in-out group">
                         <!-- Song Name -->
                         <td class="px-5 py-2.5">
                             <div
-                                class="font-medium text-slate-900 group-hover:text-indigo-600 transition-colors max-w-xs truncate md:max-w-md text-sm">
+                                class="font-medium text-slate-900 dark:text-slate-100 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors max-w-xs truncate md:max-w-md text-sm">
                                 {{ row.song }}
                             </div>
-                            <div class="text-[11px] text-slate-400 mt-0.5">#TICK-00{{ $index + 1 }}</div>
+                            <div class="text-[11px] text-slate-400 dark:text-slate-500 mt-0.5">#TICK-00{{ $index + 1 }}
+                            </div>
                         </td>
 
                         <!-- Artist Name -->
                         <td class="px-5 py-2.5">
                             <div class="flex items-center gap-2.5">
-                                <div class="font-medium text-slate-800 text-sm">{{ row.artist }}</div>
+                                <div class="font-medium text-slate-800 dark:text-slate-200 text-sm">{{ row.artist }}
+                                </div>
                             </div>
                         </td>
 
                         <!-- Year -->
-                        <td class="px-5 py-2.5 whitespace-nowrap text-slate-500 text-xs">
+                        <td class="px-5 py-2.5 whitespace-nowrap text-slate-500 dark:text-slate-400 text-xs">
                             {{ row.year }}
                         </td>
 
                         <!-- Action Button -->
                         <td class="px-5 py-2.5 whitespace-nowrap text-right text-xs font-medium">
                             <button
-                                class="cursor-pointer inline-flex items-center gap-1 rounded-md border border-slate-200 bg-white px-2 py-1 text-xs font-medium text-slate-700 shadow-sm hover:bg-slate-50 transition">
+                                class="cursor-pointer inline-flex items-center gap-1 rounded-md border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-2 py-1 text-xs font-medium text-slate-700 dark:text-slate-300 shadow-sm hover:bg-slate-50 dark:hover:bg-slate-700 transition">
                                 View
                             </button>
                         </td>
