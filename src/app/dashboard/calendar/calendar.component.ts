@@ -64,7 +64,7 @@ export class Calendar implements AfterViewInit {
   constructor() {
     effect(() => {
       const isDark = this.themeService.isDarkMode();
-      const currentTheme = isDark ? "dark" : "slate-light"
+      const currentTheme = isDark ? "dark" : "light"
 
       if (this.calendar) {
         this.calendar.selectedTheme = currentTheme;
@@ -75,7 +75,7 @@ export class Calendar implements AfterViewInit {
 
   ngAfterViewInit(): void {
 
-    const initialTheme = this.themeService.isDarkMode() ? "dark" : "slate-light";
+    const initialTheme = this.themeService.isDarkMode() ? "dark" : "light";
 
     const staticRange = ["2026-09-01:2026-09-05", "2026-09-21"];
 
