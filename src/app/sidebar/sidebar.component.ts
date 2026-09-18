@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit, Output } from '@angular/core';
 import { NgClass } from '@angular/common';
 import { MatDividerModule } from '@angular/material/divider';
 import { MenuItem } from '../../../utils/menu-item.model';
@@ -6,6 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { Main } from '../main/main.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle'; // <-- 1. Import slide toggle module
+import { ThemeService } from '../theme-service.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -19,7 +20,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle'; // <-- 1.
 export class Sidebar implements OnInit {
   isExpanded = true;
   isDesktop = false;
-  isDarkMode = false; // <-- 3. Add this class state variable
+
+  themeService = inject(ThemeService);
 
   menuItems: MenuItem[] = [
     { icon: 'dashboard', label: 'Dashboard' },
@@ -46,11 +48,7 @@ export class Sidebar implements OnInit {
   }
 
   // 4. Add this function to actively append the styling class to the page document frame
-  toggleTheme(): void {
-    this.isDarkMode = !this.isDarkMode;
-    // Toggles the .dark class on the body so Tailwind dark utilities kick in automatically
-    document.body.classList.toggle('dark', this.isDarkMode);
-  }
+  
 
   logout(): void {
     console.log('Logging out...');

@@ -1,5 +1,8 @@
 /* src/styles.css */
 @import 'tailwindcss';
+@import 'vanilla-calendar-pro/styles/index.css';
+
+
 
 @theme {
     --color-bg-dark: #0F3040;

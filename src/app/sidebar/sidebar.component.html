@@ -86,8 +86,8 @@
                     <div class="flex items-center justify-center text-slate-400"
                         [ngClass]="isExpanded ? 'shrink-0' : 'w-full'">
                         <mat-icon class="text-[22px] w-5 h-5 flex items-center justify-center"
-                            [ngClass]="isDarkMode ? 'text-amber-400' : 'text-slate-400'">
-                            {{ isDarkMode ? 'dark_mode' : 'light_mode' }}
+                        [ngClass]="themeService.isDarkMode() ? 'text-amber-400' : 'text-slate-400'">
+                            {{ themeService.isDarkMode() ? 'dark_mode' : 'light_mode' }}
                         </mat-icon>
                     </div>
                     @if (isExpanded) {
@@ -98,7 +98,7 @@
                 </div>
                 <!-- Connected (change) callback handler directly to your toggleTheme method -->
                 @if (isExpanded) {
-                <mat-slide-toggle [checked]="isDarkMode" (change)="toggleTheme()"
+                <mat-slide-toggle [checked]="themeService.isDarkMode()" (change)="themeService.toggleTheme()"
                     class="cursor-pointer scale-90 transition-opacity duration-300 shrink-0">
                 </mat-slide-toggle>
                 }
@@ -106,12 +106,12 @@
 
             <!-- Premium Add-on 2: Compact Mobile Topbar Dark Mode Icon Button -->
             <!-- Connected (click) handler callback directly to your toggleTheme method -->
-            <button (click)="toggleTheme()" [matTooltip]="isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'"
+            <button (click)="themeService.toggleTheme()" [matTooltip]="themeService.isDarkMode() ? 'Switch to Light Mode' : 'Switch to Dark Mode'"
                 matTooltipPosition="below"
                 class="min-[1201px]:hidden flex items-center justify-center p-2 rounded-xl border border-slate-900 bg-slate-900/40 text-slate-400 hover:text-white transition-all cursor-pointer relative shrink-0">
                 <mat-icon class="text-[20px] w-5 h-5 flex items-center justify-center"
-                    [ngClass]="isDarkMode ? 'text-amber-400' : 'text-slate-400'">
-                    {{ isDarkMode ? 'dark_mode' : 'light_mode' }}
+                    [ngClass]="themeService.isDarkMode() ? 'text-amber-400' : 'text-slate-400'">
+                    {{ themeService.isDarkMode() ? 'dark_mode' : 'light_mode' }}
                 </mat-icon>
             </button>
 

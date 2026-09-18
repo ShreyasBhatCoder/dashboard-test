@@ -1,15 +1,13 @@
-<!-- Fixed Dashboard Grid Frame with asymmetrical columns and height control -->
 <div class="grid grid-cols-1 min-[1201px]:grid-cols-[1.6fr_1fr] gap-6 w-full p-6 md:p-9 max-w-[1600px] mx-auto items-start">
     
-    <!-- Left Top Card: Inherits the wider 1.6fr column allocation -->
+    <!-- Left Top Card: Main content area (Wider 1.6fr column) -->
     <app-client-tickets class="w-full" />
     
-    <!-- Right Top Card: Inherits the narrower 1fr column allocation -->
-    <app-client-tickets class="w-full" />
+    <!-- Right Top Card: Sidebar area (Narrower 1fr column) -->
+    <app-calendar class="w-full" />
     
     <!-- Full-Width Footprint for Client List Table -->
     <div class="col-span-1 min-[1201px]:col-span-2 w-full mt-2">
-        <app-client-tickets />
         <!-- Space to add a clients list table HERE later -->
     </div>
 </div>

@@ -1,0 +1,4 @@
+/* Add this to your Angular component's .css / .scss file */
+::v-deep .vanilla-calendar-days {
+  pointer-events: none !important;
+}
