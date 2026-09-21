@@ -1,13 +1,13 @@
-<div class="grid grid-cols-1 min-[1201px]:grid-cols-[1.6fr_1fr] gap-6 w-full p-6 md:p-9 max-w-[1600px] mx-auto items-start">
-    
-    <!-- Left Top Card: Main content area (Wider 1.6fr column) -->
-    <app-client-tickets class="w-full" />
-    
-    <!-- Right Top Card: Sidebar area (Narrower 1fr column) -->
-    <app-calendar class="w-full" />
-    
-    <!-- Full-Width Footprint for Client List Table -->
-    <div class="col-span-1 min-[1201px]:col-span-2 w-full mt-2">
-        <!-- Space to add a clients list table HERE later -->
+<div class="flex flex-col w-full p-9 gap-6">
+    <div class="flex flex-col min-[1100px]:flex-row gap-6">
+
+        <div class="w-full flex-[1.8]">
+            <app-client-tickets class="w-full h-full" />
+        </div>
+        <div class="w-full flex-1">
+            <app-calendar class="w-full h-full" />
+        </div>
+
     </div>
+    <app-client-tickets class="w-full" />
 </div>

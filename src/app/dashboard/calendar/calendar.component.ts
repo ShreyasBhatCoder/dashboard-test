@@ -6,11 +6,12 @@ import 'vanilla-calendar-pro/styles/index.css';
 import 'vanilla-calendar-pro/styles/themes/slate-light.css';
 
 import { ThemeService } from '../../theme-service.service';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 
 @Component({
   selector: 'app-calendar',
-  imports: [MatCardModule],
+  imports: [MatCardModule, MatButtonToggleModule],
   templateUrl: './calendar.component.html',
   styleUrl: './calendar.component.css',
   providers: [provideNativeDateAdapter()],
@@ -18,6 +19,7 @@ import { ThemeService } from '../../theme-service.service';
 })
 export class Calendar implements AfterViewInit {
   selectedDate = model<Date | null>(null);
+  hideSingleSelectionIndicator = false;
   @ViewChild("calendar") calendarRef!: ElementRef;
 
   private calendar!: VanillaCalendar;
@@ -87,6 +89,7 @@ export class Calendar implements AfterViewInit {
       animation: true,
       enableSwipe: true, // Prevents touch drag gestures on mobile
       selectedTheme: initialTheme,
+      
 
       // This fires immediately when someone tries to click or drag a new date range
       onClickDate: (self) => {

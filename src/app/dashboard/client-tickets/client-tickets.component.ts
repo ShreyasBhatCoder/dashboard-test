@@ -8,14 +8,29 @@ import { MatTableModule } from '@angular/material/table';
   imports: [MatCardModule, MatTableModule],
   templateUrl: './client-tickets.component.html',
   styleUrl: './client-tickets.component.css',
+  host: {
+    class: 'block w-full min-h-0 flex-1 min-[1201px]:h-full min-[1201px]:flex min-[1201px]:flex-col'
+  }
 })
 export class ClientTickets {
   displayedColumns: string[] = ['Song', 'Artist', 'Year'];
-  
+
   dataSource: TicketElement[] = [
     { song: 'The Sliding Mr. Bones (Next Stop, Pottersville)', artist: 'Malcolm Lockyer', year: 1961 },
     { song: 'Witchy Woman', artist: 'The Eagles', year: 1972 },
     { song: 'Shining Star', artist: 'Earth, Wind, and Fire', year: 1975 },
-    { song: 'Für Elise', artist: 'Ludwig Van Beethoven', year: 1810 }
+    { song: 'Für Elise', artist: 'Ludwig Van Beethoven', year: 1810 },
+    { song: 'Für Elise', artist: 'Ludwig Van Beethoven', year: 1810 },
+    { song: 'Für Elise', artist: 'Ludwig Van Beethoven', year: 1810 },
+    { song: 'Für Elise', artist: 'Ludwig Van Beethoven', year: 1810 },
+    { song: 'Für Elise', artist: 'Ludwig Van Beethoven', year: 1810 },
+    { song: 'Für Elise', artist: 'Ludwig Van Beethoven', year: 1810 },
+    { song: 'Für Elise', artist: 'Ludwig Van Beethoven', year: 1810 },
+    { song: 'Für Elise', artist: 'Ludwig Van Beethoven', year: 1810 },
+    { song: 'Für Elise', artist: 'Ludwig Van Beethoven', year: 1810 },
+    { song: 'Für Elise', artist: 'Ludwig Van Beethoven', year: 1810 },
+    { song: 'Für Elise', artist: 'Ludwig Van Beethoven', year: 1810 },
+    { song: 'Für Elise', artist: 'Ludwig Van Beethoven', year: 1810 },
+    { song: 'Für Elise', artist: 'Ludwig Van Beethoven', year: 1810 },
   ];
 }
