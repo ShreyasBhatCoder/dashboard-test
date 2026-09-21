@@ -1,0 +1,148 @@
+<mat-card
+    class="overflow-hidden rounded-xl border border-slate-100 dark:border-slate-800/80 bg-white dark:bg-slate-900 shadow-sm max-h-85 flex flex-col transition-colors duration-200">
+    <!-- Compact Card Header -->
+    <mat-card-header class="px-5 py-3 bg-slate-50/50 dark:bg-slate-900/60 shrink-0 mb-5">
+        <div class="flex items-center justify-between w-full">
+            <div>
+                <mat-card-title class="text-base font-semibold text-slate-900 dark:text-slate-100 tracking-tight">My
+                    Clients</mat-card-title>
+            </div>
+        </div>
+    </mat-card-header>
+
+
+
+    <div class="flex flex-row items-center justify-between gap-4 mx-5 mb-4 shrink-0">
+
+        <!-- Left Section: Premium Search Container -->
+        <div id="search-bar" class="w-full max-w-xs">
+            <form
+                class="flex flex-row items-center gap-2 bg-slate-50/50 dark:bg-slate-950/40 border border-slate-200 dark:border-slate-800/80 rounded-lg px-3 py-1.5 text-slate-900 dark:text-slate-100 shadow-[inset_0_1px_2px_rgba(0,0,0,0.02)] transition-all duration-200 focus-within:border-indigo-500 focus-within:ring-2 focus-within:ring-indigo-500/10 focus-within:bg-white dark:focus-within:bg-slate-950/60">
+                <mat-icon
+                    class="text-slate-400 dark:text-slate-500 select-none text-base h-4 w-4 flex items-center justify-center">search</mat-icon>
+                <input type="search" placeholder="Search clients..."
+                    class="w-full bg-transparent text-xs font-medium placeholder-slate-400/80 dark:placeholder-slate-500/80 focus:outline-none" />
+            </form>
+        </div>
+
+        <!-- Right Section: Docked Action Controllers -->
+        <div class="flex items-center gap-2.5 shrink-0">
+
+            <!-- Filter Options Toggle Group -->
+            <div id="filters">
+                <mat-button-toggle-group [hideSingleSelectionIndicator]="true"
+                    class="border! border-slate-200! dark:border-slate-800/80! bg-slate-50/50! dark:bg-slate-950/30! p-0.5! rounded-lg! gap-0.5! flex items-center h-7">
+                    <mat-button-toggle value="all"
+                        class="border-none! rounded-md! px-3 font-semibold! text-[11px]! tracking-wide! transition-all! duration-150! text-slate-500! dark:text-slate-400! hover:text-slate-900! dark:hover:text-slate-200! aria-checked:bg-white! aria-checked:text-slate-900! aria-checked:shadow-[0_1px_2px_rgba(0,0,0,0.05),0_0_0_1px_rgba(0,0,0,0.02)]! aria-checked:dark:bg-slate-800! aria-checked:dark:text-slate-100! aria-checked:dark:ring-1! aria-checked:dark:ring-white/10!">
+                        All
+                    </mat-button-toggle>
+
+                    <mat-button-toggle value="old"
+                        class="border-none! rounded-md! px-3 font-semibold! text-[11px]! tracking-wide! transition-all! duration-150! text-slate-500! dark:text-slate-400! hover:text-slate-900! dark:hover:text-slate-200! aria-checked:bg-white! aria-checked:text-slate-900! aria-checked:shadow-[0_1px_2px_rgba(0,0,0,0.05),0_0_0_1px_rgba(0,0,0,0.02)]! aria-checked:dark:bg-slate-800! aria-checked:dark:text-slate-100! aria-checked:dark:ring-1! aria-checked:dark:ring-white/10!">
+                        Old
+                    </mat-button-toggle>
+
+                    <mat-button-toggle value="new"
+                        class="border-none! rounded-md! px-3 font-semibold! text-[11px]! tracking-wide! transition-all! duration-150! text-slate-500! dark:text-slate-400! hover:text-slate-900! dark:hover:text-slate-200! aria-checked:bg-white! aria-checked:text-slate-900! aria-checked:shadow-[0_1px_2px_rgba(0,0,0,0.05),0_0_0_1px_rgba(0,0,0,0.02)]! aria-checked:dark:bg-slate-800! aria-checked:dark:text-slate-100! aria-checked:dark:ring-1! aria-checked:dark:ring-white/10!">
+                        New
+                    </mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+
+            <!-- "View As" Layout Toggle Group -->
+            <div id="view-as">
+                <mat-button-toggle-group [hideSingleSelectionIndicator]="true" name="viewAsLayout" value="table"
+                    class="border! border-slate-200! dark:border-slate-800/80! bg-slate-50/50! dark:bg-slate-950/30! p-1! rounded-xl! gap-1! flex items-center h-9">
+                    <mat-button-toggle value="table" matTooltip="Table view"
+                        class="border-none! rounded-lg! w-8 h-7! transition-all! duration-150! text-slate-400! dark:text-slate-500! hover:text-slate-900! dark:hover:text-slate-200! aria-checked:bg-white! aria-checked:text-indigo-600! aria-checked:shadow-[0_1px_3px_rgba(0,0,0,0.08)]! aria-checked:dark:bg-slate-800! aria-checked:dark:text-indigo-400! aria-checked:dark:ring-1! aria-checked:dark:ring-white/10! [::v-deep_.mat-button-toggle-label-content]:p-0! [::v-deep_.mat-button-toggle-label-content]:h-full! [::v-deep_.mat-button-toggle-label-content]:w-full! [::v-deep_.mat-button-toggle-label-content]:flex! [::v-deep_.mat-button-toggle-label-content]:items-center! [::v-deep_.mat-button-toggle-label-content]:justify-center!">
+                        <mat-icon
+                            class="text-lg! h-5! w-5! flex! items-center! justify-center! m-0!">table_chart</mat-icon>
+                    </mat-button-toggle>
+
+                    <mat-button-toggle value="grid" matTooltip="Grid view"
+                        class="border-none! rounded-lg! w-8 h-7! transition-all! duration-150! text-slate-400! dark:text-slate-500! hover:text-slate-900! dark:hover:text-slate-200! aria-checked:bg-white! aria-checked:text-indigo-600! aria-checked:shadow-[0_1px_3px_rgba(0,0,0,0.08)]! aria-checked:dark:bg-slate-800! aria-checked:dark:text-indigo-400! aria-checked:dark:ring-1! aria-checked:dark:ring-white/10! [::v-deep_.mat-button-toggle-label-content]:p-0! [::v-deep_.mat-button-toggle-label-content]:h-full! [::v-deep_.mat-button-toggle-label-content]:w-full! [::v-deep_.mat-button-toggle-label-content]:flex! [::v-deep_.mat-button-toggle-label-content]:items-center! [::v-deep_.mat-button-toggle-label-content]:justify-center!">
+                        <mat-icon
+                            class="text-lg! h-5! w-5! flex! items-center! justify-center! m-0!">grid_view</mat-icon>
+                    </mat-button-toggle>
+
+                    <mat-button-toggle value="card" matTooltip="Card view"
+                        class="border-none! rounded-lg! w-8 h-7! transition-all! duration-150! text-slate-400! dark:text-slate-500! hover:text-slate-900! dark:hover:text-slate-200! aria-checked:bg-white! aria-checked:text-indigo-600! aria-checked:shadow-[0_1px_3px_rgba(0,0,0,0.08)]! aria-checked:dark:bg-slate-800! aria-checked:dark:text-indigo-400! aria-checked:dark:ring-1! aria-checked:dark:ring-white/10! [::v-deep_.mat-button-toggle-label-content]:p-0! [::v-deep_.mat-button-toggle-label-content]:h-full! [::v-deep_.mat-button-toggle-label-content]:w-full! [::v-deep_.mat-button-toggle-label-content]:flex! [::v-deep_.mat-button-toggle-label-content]:items-center! [::v-deep_.mat-button-toggle-label-content]:justify-center!">
+                        <mat-icon
+                            class="text-lg! h-5! w-5! flex! items-center! justify-center! m-0!">view_agenda</mat-icon>
+                    </mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+
+
+
+        </div>
+    </div>
+
+
+    <!-- Compressed Table Wrapper with Shorter Max Height -->
+    <mat-card-content class="p-0 flex-1 min-h-0">
+        <!-- Base height restricted tightly to 220px -->
+        <div class="overflow-x-auto overflow-y-auto max-h-55 scrollbar-thin">
+            <table class="w-full border-collapse text-left text-sm text-slate-600 dark:text-slate-300 table-fixed">
+                <!-- Sticky Header with solid opaque background to prevent see-through on scroll -->
+                <thead
+                    class="sticky top-0 z-10 bg-slate-50 dark:bg-slate-800 shadow-[0_1px_0_0_rgba(226,232,240,1)] dark:shadow-[0_1px_0_0_rgba(51,65,85,1)]">
+                    <tr class="bg-slate-50 dark:bg-slate-800">
+                        @for (column of columns; track column) {
+                        <th
+                            class="px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 bg-slate-50 dark:bg-slate-800">
+                            {{ column }}
+                        </th>
+                        }
+                        <th
+                            class="px-5 py-2.5 text-right text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 bg-slate-50 dark:bg-slate-800">
+                            Actions
+                        </th>
+                    </tr>
+                </thead>
+
+                <!-- Compact Body Rows -->
+                <tbody class="divide-y divide-slate-100 dark:divide-slate-800/80 bg-white dark:bg-slate-900">
+                    @for (row of clientList; track row.id) {
+                    <tr
+                        class="hover:bg-slate-50/80 dark:bg-slate-800/60 transition-colors duration-150 ease-in-out group">
+                        <!-- Song Name -->
+                        <td class="px-5 py-2.5">
+                            <div
+                                class="font-medium text-slate-900 dark:text-slate-100 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors max-w-xs truncate md:max-w-md text-sm">
+                                {{ row.name }}
+                            </div>
+                            <div class="text-[11px] text-slate-400 dark:text-slate-500 mt-0.5">#C00{{ $index + 1 }}
+                            </div>
+                        </td>
+
+                        <!-- Artist Name -->
+                        <td class="px-5 py-2.5">
+                            <div class="flex items-center gap-2.5">
+                                <div class="font-medium text-slate-800 dark:text-slate-200 text-sm">{{ row.email }}
+                                </div>
+                            </div>
+                        </td>
+
+                        <!-- Year -->
+                        <td class="px-5 py-2.5 whitespace-nowrap text-slate-500 dark:text-slate-400 text-xs">
+                            {{ row.contact }}
+                        </td>
+                        <td class="px-5 py-2.5 whitespace-nowrap text-slate-500 dark:text-slate-400 text-xs">
+                            {{ row.contractType }}
+                        </td>
+
+                        <!-- Action Button -->
+                        <td class="px-5 py-2.5 whitespace-nowrap text-right text-xs font-medium">
+                            <button
+                                class="cursor-pointer inline-flex items-center gap-1 rounded-md border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-2 py-1 text-xs font-medium text-slate-700 dark:text-slate-300 shadow-sm hover:bg-slate-50 dark:bg-slate-700 transition">
+                                View
+                            </button>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </mat-card-content>
+</mat-card>
