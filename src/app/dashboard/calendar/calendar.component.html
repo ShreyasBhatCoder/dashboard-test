@@ -1,4 +1,4 @@
-<mat-card class="p-0 overflow-hidden bg-transparent shadow-none border-0">
+<mat-card class="p-0 h-full overflow-hidden bg-transparent shadow-none border-0">
 
     <!-- 1. Calendar Section -->
     <!-- Added fixed height h-[312px] to fit a 6-row week grid perfectly.
@@ -8,26 +8,30 @@
     </div>
 
     <!-- 2. Ticket Display Container -->
-    <mat-card-content
-        class="mx-4 mt-2 mb-4 p-4 h-40 border-2 border-white dark:border-gray-700 bg-white dark:bg-gray-800 rounded-xl shadow-lg transition-colors duration-200">
+    <mat-card-content class="mx-4 mt-2 mb-4 p-4 h-40 border-2 border-white dark:border-gray-700 bg-white dark:bg-gray-800 rounded-xl shadow-lg transition-colors duration-200">
         <!-- Ticket cards display -->
         <div class="flex flex-row justify-between items-center mt-3">
             <p class="text-sm font-medium text-gray-700 dark:text-gray-300">Tickets</p>
-            <mat-button-toggle-group [hideSingleSelectionIndicator]="true"
-                class="text-black dark:text-white border! border-slate-200! dark:border-slate-800! bg-slate-50! dark:bg-slate-950! rounded-md overflow-hidden h-6.5! items-center!
-           [&_.mat-button-toggle-label-content]:text-slate-600! [&_.mat-button-toggle-label-content]dark:text-slate-400!
-           [&_.mat-button-toggle-checked]:bg-white! [&_.mat-button-toggle-checked]dark:bg-slate-800!
-           [&_.mat-button-toggle-checked_.mat-button-toggle-label-content]:text-black! [&_.mat-button-toggle-checked_.mat-button-toggle-label-content]dark:text-indigo-400!
-           [&_.mat-button-toggle-side-border]:border-slate-200/60! [&_.mat-button-toggle-side-border]dark:border-slate-800/80!
-           **:text-[11px]! **:h-full!
-           [&_.mat-button-toggle-label-content]:flex! [&_.mat-button-toggle-label-content]:items-center! [&_.mat-button-toggle-label-content]:justify-center! [&_.mat-button-toggle-label-content]:leading-none!">
-
-                <mat-button-toggle value="high" class="transition-colors px-2!">All</mat-button-toggle>
-                <mat-button-toggle value="medium" class="transition-colors px-2!">Milestones</mat-button-toggle>
-                <mat-button-toggle value="low" class="transition-colors px-2!">Deadlines</mat-button-toggle>
-            </mat-button-toggle-group>
         </div>
     </mat-card-content>
+
+    <mat-card-footer class="mx-4 mt-2 mb-4 p-4 transition-colors duration-200">
+        
+        <mat-button-toggle-group [hideSingleSelectionIndicator]="true"
+            class="text-black dark:text-white border! border-slate-200! dark:border-slate-800! bg-slate-50! dark:bg-slate-950! rounded-md overflow-hidden h-6.5! items-center!
+                               [&_.mat-button-toggle-label-content]:text-slate-600! [&_.mat-button-toggle-label-content]dark:text-slate-400!
+                               [&_.mat-button-toggle-checked]:bg-white! [&_.mat-button-toggle-checked]dark:bg-slate-800!
+                               [&_.mat-button-toggle-checked_.mat-button-toggle-label-content]:text-black! [&_.mat-button-toggle-checked_.mat-button-toggle-label-content]dark:text-indigo-400!
+                               [&_.mat-button-toggle-side-border]:border-slate-200/60! [&_.mat-button-toggle-side-border]dark:border-slate-800/80!
+                               **:text-[11px]! **:h-full!
+                               [&_.mat-button-toggle-label-content]:flex! [&_.mat-button-toggle-label-content]:items-center! [&_.mat-button-toggle-label-content]:justify-center! [&_.mat-button-toggle-label-content]:leading-none!">
+        
+            <mat-button-toggle value="high" class="transition-colors px-2!">All</mat-button-toggle>
+            <mat-button-toggle value="medium" class="transition-colors px-2!">Milestones</mat-button-toggle>
+            <mat-button-toggle value="low" class="transition-colors px-2!">Deadlines</mat-button-toggle>
+        </mat-button-toggle-group>
+
+    </mat-card-footer>
 
 
 </mat-card>
